@@ -1,0 +1,907 @@
+Analysis & Synthesis report for PROCESSOR_PIPELINE
+Sun Nov 22 13:53:51 2026
+Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis RAM Summary
+  9. Registers Removed During Synthesis
+ 10. Removed Registers Triggering Further Register Optimizations
+ 11. General Register Statistics
+ 12. Inverted Register Statistics
+ 13. Registers Added for RAM Pass-Through Logic
+ 14. Registers Packed Into Inferred Megafunctions
+ 15. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 16. Source assignments for DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0|shift_taps_01m:auto_generated|altsyncram_7461:altsyncram4
+ 17. Source assignments for DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|altsyncram:ram_rtl_0|altsyncram_i5i1:auto_generated
+ 18. Parameter Settings for Inferred Entity Instance: DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0
+ 19. Parameter Settings for Inferred Entity Instance: DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|altsyncram:ram_rtl_0
+ 20. altshift_taps Parameter Settings by Entity Instance
+ 21. altsyncram Parameter Settings by Entity Instance
+ 22. Port Connectivity Checks: "DATAPATH_PIPELINE:datapath_module"
+ 23. Elapsed Time Per Partition
+ 24. Analysis & Synthesis Messages
+ 25. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                         ;
++------------------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Sun Nov 22 13:53:51 2026           ;
+; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
+; Revision Name                      ; PROCESSOR_PIPELINE                              ;
+; Top-level Entity Name              ; PROCESSOR_PIPELINE                              ;
+; Family                             ; Cyclone II                                      ;
+; Total logic elements               ; 4,727                                           ;
+;     Total combinational functions  ; 3,672                                           ;
+;     Dedicated logic registers      ; 1,441                                           ;
+; Total registers                    ; 1441                                            ;
+; Total pins                         ; 138                                             ;
+; Total virtual pins                 ; 0                                               ;
+; Total memory bits                  ; 2,048                                           ;
+; Embedded Multiplier 9-bit elements ; 0                                               ;
+; Total PLLs                         ; 0                                               ;
++------------------------------------+-------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EP2C35F672C6       ;                    ;
+; Top-level entity name                                                      ; PROCESSOR_PIPELINE ; PROCESSOR_PIPELINE ;
+; Family name                                                                ; Cyclone II         ; Cyclone IV GX      ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; Off                ; Off                ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 12     ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                                                          ;
++------------------------------------------------------+-----------------+-------------------------------------------------------+------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path                     ; Used in Netlist ; File Type                                             ; File Name with Absolute Path                                                                         ; Library ;
++------------------------------------------------------+-----------------+-------------------------------------------------------+------------------------------------------------------------------------------------------------------+---------+
+; PROCESSOR_PIPELINE.v                                 ; yes             ; User Verilog HDL File                                 ; D:/hoctap/ki 7/do_an_thiet_ke_1/Risc_v_Pipeline/PROCESSOR_PIPELINE.v                                 ;         ;
+; DATAPATH_PIPELINE.v                                  ; yes             ; User Verilog HDL File                                 ; D:/hoctap/ki 7/do_an_thiet_ke_1/Risc_v_Pipeline/DATAPATH_PIPELINE.v                                  ;         ;
+; IF_ID_REG.v                                          ; yes             ; User Verilog HDL File                                 ; D:/hoctap/ki 7/do_an_thiet_ke_1/Risc_v_Pipeline/IF_ID_REG.v                                          ;         ;
+; ID_EX_REG.v                                          ; yes             ; User Verilog HDL File                                 ; D:/hoctap/ki 7/do_an_thiet_ke_1/Risc_v_Pipeline/ID_EX_REG.v                                          ;         ;
+; EX_MEM_REG.v                                         ; yes             ; User Verilog HDL File                                 ; D:/hoctap/ki 7/do_an_thiet_ke_1/Risc_v_Pipeline/EX_MEM_REG.v                                         ;         ;
+; MEM_WB_REG.v                                         ; yes             ; User Verilog HDL File                                 ; D:/hoctap/ki 7/do_an_thiet_ke_1/Risc_v_Pipeline/MEM_WB_REG.v                                         ;         ;
+; FORWARDING_UNIT.v                                    ; yes             ; User Verilog HDL File                                 ; D:/hoctap/ki 7/do_an_thiet_ke_1/Risc_v_Pipeline/FORWARDING_UNIT.v                                    ;         ;
+; HAZARD_DETECTION.v                                   ; yes             ; User Verilog HDL File                                 ; D:/hoctap/ki 7/do_an_thiet_ke_1/Risc_v_Pipeline/HAZARD_DETECTION.v                                   ;         ;
+; ALU.v                                                ; yes             ; User Verilog HDL File                                 ; D:/hoctap/ki 7/do_an_thiet_ke_1/Risc_v_Pipeline/ALU.v                                                ;         ;
+; CONTROL.v                                            ; yes             ; User Verilog HDL File                                 ; D:/hoctap/ki 7/do_an_thiet_ke_1/Risc_v_Pipeline/CONTROL.v                                            ;         ;
+; REG_FILE.v                                           ; yes             ; User Verilog HDL File                                 ; D:/hoctap/ki 7/do_an_thiet_ke_1/Risc_v_Pipeline/REG_FILE.v                                           ;         ;
+; IMM_GEN.v                                            ; yes             ; User Verilog HDL File                                 ; D:/hoctap/ki 7/do_an_thiet_ke_1/Risc_v_Pipeline/IMM_GEN.v                                            ;         ;
+; INST_MEM.v                                           ; yes             ; User Verilog HDL File                                 ; D:/hoctap/ki 7/do_an_thiet_ke_1/Risc_v_Pipeline/INST_MEM.v                                           ;         ;
+; DATA_MEM.v                                           ; yes             ; User Verilog HDL File                                 ; D:/hoctap/ki 7/do_an_thiet_ke_1/Risc_v_Pipeline/DATA_MEM.v                                           ;         ;
+; altshift_taps.tdf                                    ; yes             ; Megafunction                                          ; c:/altera/quartus/libraries/megafunctions/altshift_taps.tdf                                          ;         ;
+; altdpram.inc                                         ; yes             ; Megafunction                                          ; c:/altera/quartus/libraries/megafunctions/altdpram.inc                                               ;         ;
+; lpm_counter.inc                                      ; yes             ; Megafunction                                          ; c:/altera/quartus/libraries/megafunctions/lpm_counter.inc                                            ;         ;
+; lpm_compare.inc                                      ; yes             ; Megafunction                                          ; c:/altera/quartus/libraries/megafunctions/lpm_compare.inc                                            ;         ;
+; lpm_constant.inc                                     ; yes             ; Megafunction                                          ; c:/altera/quartus/libraries/megafunctions/lpm_constant.inc                                           ;         ;
+; db/shift_taps_01m.tdf                                ; yes             ; Auto-Generated Megafunction                           ; D:/hoctap/ki 7/do_an_thiet_ke_1/Risc_v_Pipeline/db/shift_taps_01m.tdf                                ;         ;
+; db/altsyncram_7461.tdf                               ; yes             ; Auto-Generated Megafunction                           ; D:/hoctap/ki 7/do_an_thiet_ke_1/Risc_v_Pipeline/db/altsyncram_7461.tdf                               ;         ;
+; db/add_sub_gvd.tdf                                   ; yes             ; Auto-Generated Megafunction                           ; D:/hoctap/ki 7/do_an_thiet_ke_1/Risc_v_Pipeline/db/add_sub_gvd.tdf                                   ;         ;
+; db/cntr_kkf.tdf                                      ; yes             ; Auto-Generated Megafunction                           ; D:/hoctap/ki 7/do_an_thiet_ke_1/Risc_v_Pipeline/db/cntr_kkf.tdf                                      ;         ;
+; db/cmpr_6cc.tdf                                      ; yes             ; Auto-Generated Megafunction                           ; D:/hoctap/ki 7/do_an_thiet_ke_1/Risc_v_Pipeline/db/cmpr_6cc.tdf                                      ;         ;
+; db/cntr_74h.tdf                                      ; yes             ; Auto-Generated Megafunction                           ; D:/hoctap/ki 7/do_an_thiet_ke_1/Risc_v_Pipeline/db/cntr_74h.tdf                                      ;         ;
+; altsyncram.tdf                                       ; yes             ; Megafunction                                          ; c:/altera/quartus/libraries/megafunctions/altsyncram.tdf                                             ;         ;
+; stratix_ram_block.inc                                ; yes             ; Megafunction                                          ; c:/altera/quartus/libraries/megafunctions/stratix_ram_block.inc                                      ;         ;
+; lpm_mux.inc                                          ; yes             ; Megafunction                                          ; c:/altera/quartus/libraries/megafunctions/lpm_mux.inc                                                ;         ;
+; lpm_decode.inc                                       ; yes             ; Megafunction                                          ; c:/altera/quartus/libraries/megafunctions/lpm_decode.inc                                             ;         ;
+; aglobal130.inc                                       ; yes             ; Megafunction                                          ; c:/altera/quartus/libraries/megafunctions/aglobal130.inc                                             ;         ;
+; a_rdenreg.inc                                        ; yes             ; Megafunction                                          ; c:/altera/quartus/libraries/megafunctions/a_rdenreg.inc                                              ;         ;
+; altrom.inc                                           ; yes             ; Megafunction                                          ; c:/altera/quartus/libraries/megafunctions/altrom.inc                                                 ;         ;
+; altram.inc                                           ; yes             ; Megafunction                                          ; c:/altera/quartus/libraries/megafunctions/altram.inc                                                 ;         ;
+; db/altsyncram_i5i1.tdf                               ; yes             ; Auto-Generated Megafunction                           ; D:/hoctap/ki 7/do_an_thiet_ke_1/Risc_v_Pipeline/db/altsyncram_i5i1.tdf                               ;         ;
+; db/processor_pipeline.ram0_data_mem_24ad6d9b.hdl.mif ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; D:/hoctap/ki 7/do_an_thiet_ke_1/Risc_v_Pipeline/db/processor_pipeline.ram0_data_mem_24ad6d9b.hdl.mif ;         ;
++------------------------------------------------------+-----------------+-------------------------------------------------------+------------------------------------------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+; Estimated Total logic elements              ; 4,727 ;
+;                                             ;       ;
+; Total combinational functions               ; 3672  ;
+; Logic element usage by number of LUT inputs ;       ;
+;     -- 4 input functions                    ; 2825  ;
+;     -- 3 input functions                    ; 717   ;
+;     -- <=2 input functions                  ; 130   ;
+;                                             ;       ;
+; Logic elements by mode                      ;       ;
+;     -- normal mode                          ; 3456  ;
+;     -- arithmetic mode                      ; 216   ;
+;                                             ;       ;
+; Total registers                             ; 1441  ;
+;     -- Dedicated logic registers            ; 1441  ;
+;     -- I/O registers                        ; 0     ;
+;                                             ;       ;
+; I/O pins                                    ; 138   ;
+; Total memory bits                           ; 2048  ;
+; Embedded Multiplier 9-bit elements          ; 0     ;
+; Maximum fan-out node                        ; clock ;
+; Maximum fan-out                             ; 1473  ;
+; Total fan-out                               ; 19920 ;
+; Average fan-out                             ; 3.77  ;
++---------------------------------------------+-------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                      ;
++----------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node                   ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                            ; Library Name ;
++----------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------+--------------+
+; |PROCESSOR_PIPELINE                          ; 3672 (0)          ; 1441 (0)     ; 2048        ; 0            ; 0       ; 0         ; 138  ; 0            ; |PROCESSOR_PIPELINE                                                                                                            ; work         ;
+;    |DATAPATH_PIPELINE:datapath_module|       ; 3532 (330)        ; 1409 (0)     ; 2048        ; 0            ; 0       ; 0         ; 0    ; 0            ; |PROCESSOR_PIPELINE|DATAPATH_PIPELINE:datapath_module                                                                          ; work         ;
+;       |ALU:alu_inst|                         ; 753 (753)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PROCESSOR_PIPELINE|DATAPATH_PIPELINE:datapath_module|ALU:alu_inst                                                             ; work         ;
+;       |CONTROL:control_unit|                 ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PROCESSOR_PIPELINE|DATAPATH_PIPELINE:datapath_module|CONTROL:control_unit                                                     ; work         ;
+;       |DATA_MEM:data_memory|                 ; 165 (165)         ; 73 (73)      ; 2048        ; 0            ; 0       ; 0         ; 0    ; 0            ; |PROCESSOR_PIPELINE|DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory                                                     ; work         ;
+;          |altsyncram:ram_rtl_0|              ; 0 (0)             ; 0 (0)        ; 2048        ; 0            ; 0       ; 0         ; 0    ; 0            ; |PROCESSOR_PIPELINE|DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|altsyncram:ram_rtl_0                                ; work         ;
+;             |altsyncram_i5i1:auto_generated| ; 0 (0)             ; 0 (0)        ; 2048        ; 0            ; 0       ; 0         ; 0    ; 0            ; |PROCESSOR_PIPELINE|DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|altsyncram:ram_rtl_0|altsyncram_i5i1:auto_generated ; work         ;
+;       |EX_MEM_REG:ex_mem_reg|                ; 0 (0)             ; 80 (80)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PROCESSOR_PIPELINE|DATAPATH_PIPELINE:datapath_module|EX_MEM_REG:ex_mem_reg                                                    ; work         ;
+;       |FORWARDING_UNIT:forwarding_unit|      ; 14 (14)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PROCESSOR_PIPELINE|DATAPATH_PIPELINE:datapath_module|FORWARDING_UNIT:forwarding_unit                                          ; work         ;
+;       |HAZARD_DETECTION:hazard_unit|         ; 12 (12)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PROCESSOR_PIPELINE|DATAPATH_PIPELINE:datapath_module|HAZARD_DETECTION:hazard_unit                                             ; work         ;
+;       |ID_EX_REG:id_ex_reg|                  ; 1428 (1428)       ; 135 (135)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PROCESSOR_PIPELINE|DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg                                                      ; work         ;
+;       |IF_ID_REG:if_id_reg|                  ; 59 (59)           ; 58 (58)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PROCESSOR_PIPELINE|DATAPATH_PIPELINE:datapath_module|IF_ID_REG:if_id_reg                                                      ; work         ;
+;       |IMM_GEN:imm_generator|                ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PROCESSOR_PIPELINE|DATAPATH_PIPELINE:datapath_module|IMM_GEN:imm_generator                                                    ; work         ;
+;       |MEM_WB_REG:mem_wb_reg|                ; 8 (8)             ; 71 (71)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PROCESSOR_PIPELINE|DATAPATH_PIPELINE:datapath_module|MEM_WB_REG:mem_wb_reg                                                    ; work         ;
+;       |REG_FILE:reg_file|                    ; 759 (759)         ; 992 (992)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PROCESSOR_PIPELINE|DATAPATH_PIPELINE:datapath_module|REG_FILE:reg_file                                                        ; work         ;
+;    |IFU_PIPELINE:ifu_module|                 ; 140 (60)          ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PROCESSOR_PIPELINE|IFU_PIPELINE:ifu_module                                                                                    ; work         ;
+;       |INST_MEM:instr_mem|                   ; 80 (80)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PROCESSOR_PIPELINE|IFU_PIPELINE:ifu_module|INST_MEM:instr_mem                                                                 ; work         ;
++----------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                                                                                          ;
++-----------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------------------------------------------------------+
+; Name                                                                                                                  ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size ; MIF                                                  ;
++-----------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------------------------------------------------------+
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|altsyncram:ram_rtl_0|altsyncram_i5i1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 64           ; 32           ; 64           ; 32           ; 2048 ; db/PROCESSOR_PIPELINE.ram0_DATA_MEM_24ad6d9b.hdl.mif ;
++-----------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                                                                                                                                                 ;
++----------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
+; Register name                                                                                                                                            ; Reason for Removal                                                                      ;
++----------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
+; DATAPATH_PIPELINE:datapath_module|IF_ID_REG:if_id_reg|id_pc_plus_4[1]                                                                                    ; Merged with DATAPATH_PIPELINE:datapath_module|IF_ID_REG:if_id_reg|id_pc[1]              ;
+; DATAPATH_PIPELINE:datapath_module|IF_ID_REG:if_id_reg|id_pc_plus_4[0]                                                                                    ; Merged with DATAPATH_PIPELINE:datapath_module|IF_ID_REG:if_id_reg|id_pc[0]              ;
+; DATAPATH_PIPELINE:datapath_module|EX_MEM_REG:ex_mem_reg|mem_memtoreg[0]                                                                                  ; Merged with DATAPATH_PIPELINE:datapath_module|EX_MEM_REG:ex_mem_reg|mem_memread         ;
+; DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|ex_memtoreg[1]                                                                                     ; Merged with DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|ex_jump               ;
+; DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|ex_memtoreg[0]                                                                                     ; Merged with DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|ex_memread            ;
+; DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|ex_pc_plus_4[1]                                                                                    ; Merged with DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|ex_pc[1]              ;
+; DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|ex_pc_plus_4[0]                                                                                    ; Merged with DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|ex_pc[0]              ;
+; DATAPATH_PIPELINE:datapath_module|IF_ID_REG:if_id_reg|id_instruction[2,3]                                                                                ; Stuck at GND due to stuck port data_in                                                  ;
+; DATAPATH_PIPELINE:datapath_module|IF_ID_REG:if_id_reg|id_instruction[0,1]                                                                                ; Stuck at VCC due to stuck port data_in                                                  ;
+; DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|ex_auipc                                                                                           ; Stuck at GND due to stuck port data_in                                                  ;
+; DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|ex_jalr                                                                                            ; Stuck at GND due to stuck port data_in                                                  ;
+; DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|ex_jump                                                                                            ; Stuck at GND due to stuck port data_in                                                  ;
+; DATAPATH_PIPELINE:datapath_module|EX_MEM_REG:ex_mem_reg|mem_memtoreg[1]                                                                                  ; Stuck at GND due to stuck port data_in                                                  ;
+; DATAPATH_PIPELINE:datapath_module|MEM_WB_REG:mem_wb_reg|wb_memtoreg[1]                                                                                   ; Stuck at GND due to stuck port data_in                                                  ;
+; DATAPATH_PIPELINE:datapath_module|MEM_WB_REG:mem_wb_reg|wb_pc_plus_4[0,1]                                                                                ; Lost fanout                                                                             ;
+; DATAPATH_PIPELINE:datapath_module|EX_MEM_REG:ex_mem_reg|mem_pc_plus_4[0,1]                                                                               ; Lost fanout                                                                             ;
+; DATAPATH_PIPELINE:datapath_module|REG_FILE:reg_file|reg_memory[0][0]                                                                                     ; Stuck at GND due to stuck port clock_enable                                             ;
+; DATAPATH_PIPELINE:datapath_module|REG_FILE:reg_file|reg_memory[0][1]                                                                                     ; Stuck at GND due to stuck port clock_enable                                             ;
+; DATAPATH_PIPELINE:datapath_module|REG_FILE:reg_file|reg_memory[0][2]                                                                                     ; Stuck at GND due to stuck port clock_enable                                             ;
+; DATAPATH_PIPELINE:datapath_module|REG_FILE:reg_file|reg_memory[0][3]                                                                                     ; Stuck at GND due to stuck port clock_enable                                             ;
+; DATAPATH_PIPELINE:datapath_module|REG_FILE:reg_file|reg_memory[0][4]                                                                                     ; Stuck at GND due to stuck port clock_enable                                             ;
+; DATAPATH_PIPELINE:datapath_module|REG_FILE:reg_file|reg_memory[0][5]                                                                                     ; Stuck at GND due to stuck port clock_enable                                             ;
+; DATAPATH_PIPELINE:datapath_module|REG_FILE:reg_file|reg_memory[0][6]                                                                                     ; Stuck at GND due to stuck port clock_enable                                             ;
+; DATAPATH_PIPELINE:datapath_module|REG_FILE:reg_file|reg_memory[0][7]                                                                                     ; Stuck at GND due to stuck port clock_enable                                             ;
+; DATAPATH_PIPELINE:datapath_module|REG_FILE:reg_file|reg_memory[0][8]                                                                                     ; Stuck at GND due to stuck port clock_enable                                             ;
+; DATAPATH_PIPELINE:datapath_module|REG_FILE:reg_file|reg_memory[0][9]                                                                                     ; Stuck at GND due to stuck port clock_enable                                             ;
+; DATAPATH_PIPELINE:datapath_module|REG_FILE:reg_file|reg_memory[0][10]                                                                                    ; Stuck at GND due to stuck port clock_enable                                             ;
+; DATAPATH_PIPELINE:datapath_module|REG_FILE:reg_file|reg_memory[0][11]                                                                                    ; Stuck at GND due to stuck port clock_enable                                             ;
+; DATAPATH_PIPELINE:datapath_module|REG_FILE:reg_file|reg_memory[0][12]                                                                                    ; Stuck at GND due to stuck port clock_enable                                             ;
+; DATAPATH_PIPELINE:datapath_module|REG_FILE:reg_file|reg_memory[0][13]                                                                                    ; Stuck at GND due to stuck port clock_enable                                             ;
+; DATAPATH_PIPELINE:datapath_module|REG_FILE:reg_file|reg_memory[0][14]                                                                                    ; Stuck at GND due to stuck port clock_enable                                             ;
+; DATAPATH_PIPELINE:datapath_module|REG_FILE:reg_file|reg_memory[0][15]                                                                                    ; Stuck at GND due to stuck port clock_enable                                             ;
+; DATAPATH_PIPELINE:datapath_module|REG_FILE:reg_file|reg_memory[0][16]                                                                                    ; Stuck at GND due to stuck port clock_enable                                             ;
+; DATAPATH_PIPELINE:datapath_module|REG_FILE:reg_file|reg_memory[0][17]                                                                                    ; Stuck at GND due to stuck port clock_enable                                             ;
+; DATAPATH_PIPELINE:datapath_module|REG_FILE:reg_file|reg_memory[0][18]                                                                                    ; Stuck at GND due to stuck port clock_enable                                             ;
+; DATAPATH_PIPELINE:datapath_module|REG_FILE:reg_file|reg_memory[0][19]                                                                                    ; Stuck at GND due to stuck port clock_enable                                             ;
+; DATAPATH_PIPELINE:datapath_module|REG_FILE:reg_file|reg_memory[0][20]                                                                                    ; Stuck at GND due to stuck port clock_enable                                             ;
+; DATAPATH_PIPELINE:datapath_module|REG_FILE:reg_file|reg_memory[0][21]                                                                                    ; Stuck at GND due to stuck port clock_enable                                             ;
+; DATAPATH_PIPELINE:datapath_module|REG_FILE:reg_file|reg_memory[0][22]                                                                                    ; Stuck at GND due to stuck port clock_enable                                             ;
+; DATAPATH_PIPELINE:datapath_module|REG_FILE:reg_file|reg_memory[0][23]                                                                                    ; Stuck at GND due to stuck port clock_enable                                             ;
+; DATAPATH_PIPELINE:datapath_module|REG_FILE:reg_file|reg_memory[0][24]                                                                                    ; Stuck at GND due to stuck port clock_enable                                             ;
+; DATAPATH_PIPELINE:datapath_module|REG_FILE:reg_file|reg_memory[0][25]                                                                                    ; Stuck at GND due to stuck port clock_enable                                             ;
+; DATAPATH_PIPELINE:datapath_module|REG_FILE:reg_file|reg_memory[0][26]                                                                                    ; Stuck at GND due to stuck port clock_enable                                             ;
+; DATAPATH_PIPELINE:datapath_module|REG_FILE:reg_file|reg_memory[0][27]                                                                                    ; Stuck at GND due to stuck port clock_enable                                             ;
+; DATAPATH_PIPELINE:datapath_module|REG_FILE:reg_file|reg_memory[0][28]                                                                                    ; Stuck at GND due to stuck port clock_enable                                             ;
+; DATAPATH_PIPELINE:datapath_module|REG_FILE:reg_file|reg_memory[0][29]                                                                                    ; Stuck at GND due to stuck port clock_enable                                             ;
+; DATAPATH_PIPELINE:datapath_module|REG_FILE:reg_file|reg_memory[0][30]                                                                                    ; Stuck at GND due to stuck port clock_enable                                             ;
+; DATAPATH_PIPELINE:datapath_module|REG_FILE:reg_file|reg_memory[0][31]                                                                                    ; Stuck at GND due to stuck port clock_enable                                             ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[22]                                                                              ; Merged with DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[24] ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[24]                                                                              ; Merged with DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[26] ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[26]                                                                              ; Merged with DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[38] ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[38]                                                                              ; Merged with DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[40] ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[40]                                                                              ; Merged with DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[42] ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[42]                                                                              ; Merged with DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[36] ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[36]                                                                              ; Merged with DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[20] ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[20]                                                                              ; Merged with DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[52] ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[52]                                                                              ; Merged with DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[54] ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[54]                                                                              ; Merged with DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[56] ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[56]                                                                              ; Merged with DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[58] ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[58]                                                                              ; Merged with DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[34] ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[34]                                                                              ; Merged with DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[50] ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[50]                                                                              ; Merged with DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[18] ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[18]                                                                              ; Merged with DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[66] ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[66]                                                                              ; Merged with DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[68] ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[68]                                                                              ; Merged with DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[64] ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[64]                                                                              ; Merged with DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[32] ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[32]                                                                              ; Merged with DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[48] ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[48]                                                                              ; Merged with DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[16] ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[16]                                                                              ; Merged with DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[70] ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[70]                                                                              ; Merged with DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[72] ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[72]                                                                              ; Merged with DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[62] ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[62]                                                                              ; Merged with DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[30] ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[30]                                                                              ; Merged with DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[46] ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[46]                                                                              ; Merged with DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[14] ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[14]                                                                              ; Merged with DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[74] ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[74]                                                                              ; Merged with DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[76] ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[76]                                                                              ; Merged with DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[44] ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[44]                                                                              ; Merged with DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[60] ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[60]                                                                              ; Merged with DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[28] ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[2]                                                                               ; Merged with DATAPATH_PIPELINE:datapath_module|EX_MEM_REG:ex_mem_reg|mem_alu_result[2]   ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[4]                                                                               ; Merged with DATAPATH_PIPELINE:datapath_module|EX_MEM_REG:ex_mem_reg|mem_alu_result[3]   ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[12]                                                                              ; Merged with DATAPATH_PIPELINE:datapath_module|EX_MEM_REG:ex_mem_reg|mem_alu_result[7]   ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[10]                                                                              ; Merged with DATAPATH_PIPELINE:datapath_module|EX_MEM_REG:ex_mem_reg|mem_alu_result[6]   ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[8]                                                                               ; Merged with DATAPATH_PIPELINE:datapath_module|EX_MEM_REG:ex_mem_reg|mem_alu_result[5]   ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[6]                                                                               ; Merged with DATAPATH_PIPELINE:datapath_module|EX_MEM_REG:ex_mem_reg|mem_alu_result[4]   ;
+; DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|ex_imm[13..30]                                                                                     ; Merged with DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|ex_imm[12]            ;
+; DATAPATH_PIPELINE:datapath_module|IF_ID_REG:if_id_reg|id_instruction[27,29]                                                                              ; Merged with DATAPATH_PIPELINE:datapath_module|IF_ID_REG:if_id_reg|id_instruction[31]    ;
+; DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|ex_imm[7,9]                                                                                        ; Merged with DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|ex_imm[31]            ;
+; DATAPATH_PIPELINE:datapath_module|IF_ID_REG:if_id_reg|id_pc_plus_4[2..30]                                                                                ; Lost fanout                                                                             ;
+; DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0|shift_taps_01m:auto_generated|dffe6                               ; Lost fanout                                                                             ;
+; DATAPATH_PIPELINE:datapath_module|IF_ID_REG:if_id_reg|id_pc_plus_4[31]                                                                                   ; Lost fanout                                                                             ;
+; DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0|shift_taps_01m:auto_generated|dffe3a[0,1]                         ; Lost fanout                                                                             ;
+; DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0|shift_taps_01m:auto_generated|cntr_74h:cntr5|pre_hazard[0]        ; Lost fanout                                                                             ;
+; DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0|shift_taps_01m:auto_generated|cntr_kkf:cntr1|current_reg_q_w[0,1] ; Lost fanout                                                                             ;
+; Total Number of Removed Registers = 147                                                                                                                  ;                                                                                         ;
++----------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                                                                                                                                                                                         ;
++--------------------------------------------------------------------------------------------------------------------------------+---------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Register name                                                                                                                  ; Reason for Removal        ; Registers Removed due to This Register                                                                                                                 ;
++--------------------------------------------------------------------------------------------------------------------------------+---------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------+
+; DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|ex_jump                                                                  ; Stuck at GND              ; DATAPATH_PIPELINE:datapath_module|EX_MEM_REG:ex_mem_reg|mem_memtoreg[1],                                                                               ;
+;                                                                                                                                ; due to stuck port data_in ; DATAPATH_PIPELINE:datapath_module|MEM_WB_REG:mem_wb_reg|wb_memtoreg[1],                                                                                ;
+;                                                                                                                                ;                           ; DATAPATH_PIPELINE:datapath_module|MEM_WB_REG:mem_wb_reg|wb_pc_plus_4[0],                                                                               ;
+;                                                                                                                                ;                           ; DATAPATH_PIPELINE:datapath_module|EX_MEM_REG:ex_mem_reg|mem_pc_plus_4[0],                                                                              ;
+;                                                                                                                                ;                           ; DATAPATH_PIPELINE:datapath_module|REG_FILE:reg_file|reg_memory[0][2],                                                                                  ;
+;                                                                                                                                ;                           ; DATAPATH_PIPELINE:datapath_module|REG_FILE:reg_file|reg_memory[0][3],                                                                                  ;
+;                                                                                                                                ;                           ; DATAPATH_PIPELINE:datapath_module|REG_FILE:reg_file|reg_memory[0][4],                                                                                  ;
+;                                                                                                                                ;                           ; DATAPATH_PIPELINE:datapath_module|REG_FILE:reg_file|reg_memory[0][5],                                                                                  ;
+;                                                                                                                                ;                           ; DATAPATH_PIPELINE:datapath_module|REG_FILE:reg_file|reg_memory[0][6],                                                                                  ;
+;                                                                                                                                ;                           ; DATAPATH_PIPELINE:datapath_module|IF_ID_REG:if_id_reg|id_pc_plus_4[2],                                                                                 ;
+;                                                                                                                                ;                           ; DATAPATH_PIPELINE:datapath_module|IF_ID_REG:if_id_reg|id_pc_plus_4[3],                                                                                 ;
+;                                                                                                                                ;                           ; DATAPATH_PIPELINE:datapath_module|IF_ID_REG:if_id_reg|id_pc_plus_4[6],                                                                                 ;
+;                                                                                                                                ;                           ; DATAPATH_PIPELINE:datapath_module|IF_ID_REG:if_id_reg|id_pc_plus_4[7],                                                                                 ;
+;                                                                                                                                ;                           ; DATAPATH_PIPELINE:datapath_module|IF_ID_REG:if_id_reg|id_pc_plus_4[8],                                                                                 ;
+;                                                                                                                                ;                           ; DATAPATH_PIPELINE:datapath_module|IF_ID_REG:if_id_reg|id_pc_plus_4[9],                                                                                 ;
+;                                                                                                                                ;                           ; DATAPATH_PIPELINE:datapath_module|IF_ID_REG:if_id_reg|id_pc_plus_4[10],                                                                                ;
+;                                                                                                                                ;                           ; DATAPATH_PIPELINE:datapath_module|IF_ID_REG:if_id_reg|id_pc_plus_4[11],                                                                                ;
+;                                                                                                                                ;                           ; DATAPATH_PIPELINE:datapath_module|IF_ID_REG:if_id_reg|id_pc_plus_4[12],                                                                                ;
+;                                                                                                                                ;                           ; DATAPATH_PIPELINE:datapath_module|IF_ID_REG:if_id_reg|id_pc_plus_4[13],                                                                                ;
+;                                                                                                                                ;                           ; DATAPATH_PIPELINE:datapath_module|IF_ID_REG:if_id_reg|id_pc_plus_4[14],                                                                                ;
+;                                                                                                                                ;                           ; DATAPATH_PIPELINE:datapath_module|IF_ID_REG:if_id_reg|id_pc_plus_4[15],                                                                                ;
+;                                                                                                                                ;                           ; DATAPATH_PIPELINE:datapath_module|IF_ID_REG:if_id_reg|id_pc_plus_4[16],                                                                                ;
+;                                                                                                                                ;                           ; DATAPATH_PIPELINE:datapath_module|IF_ID_REG:if_id_reg|id_pc_plus_4[17],                                                                                ;
+;                                                                                                                                ;                           ; DATAPATH_PIPELINE:datapath_module|IF_ID_REG:if_id_reg|id_pc_plus_4[18],                                                                                ;
+;                                                                                                                                ;                           ; DATAPATH_PIPELINE:datapath_module|IF_ID_REG:if_id_reg|id_pc_plus_4[19],                                                                                ;
+;                                                                                                                                ;                           ; DATAPATH_PIPELINE:datapath_module|IF_ID_REG:if_id_reg|id_pc_plus_4[20],                                                                                ;
+;                                                                                                                                ;                           ; DATAPATH_PIPELINE:datapath_module|IF_ID_REG:if_id_reg|id_pc_plus_4[21],                                                                                ;
+;                                                                                                                                ;                           ; DATAPATH_PIPELINE:datapath_module|IF_ID_REG:if_id_reg|id_pc_plus_4[22],                                                                                ;
+;                                                                                                                                ;                           ; DATAPATH_PIPELINE:datapath_module|IF_ID_REG:if_id_reg|id_pc_plus_4[23],                                                                                ;
+;                                                                                                                                ;                           ; DATAPATH_PIPELINE:datapath_module|IF_ID_REG:if_id_reg|id_pc_plus_4[24],                                                                                ;
+;                                                                                                                                ;                           ; DATAPATH_PIPELINE:datapath_module|IF_ID_REG:if_id_reg|id_pc_plus_4[25],                                                                                ;
+;                                                                                                                                ;                           ; DATAPATH_PIPELINE:datapath_module|IF_ID_REG:if_id_reg|id_pc_plus_4[26],                                                                                ;
+;                                                                                                                                ;                           ; DATAPATH_PIPELINE:datapath_module|IF_ID_REG:if_id_reg|id_pc_plus_4[27],                                                                                ;
+;                                                                                                                                ;                           ; DATAPATH_PIPELINE:datapath_module|IF_ID_REG:if_id_reg|id_pc_plus_4[28],                                                                                ;
+;                                                                                                                                ;                           ; DATAPATH_PIPELINE:datapath_module|IF_ID_REG:if_id_reg|id_pc_plus_4[29],                                                                                ;
+;                                                                                                                                ;                           ; DATAPATH_PIPELINE:datapath_module|IF_ID_REG:if_id_reg|id_pc_plus_4[30],                                                                                ;
+;                                                                                                                                ;                           ; DATAPATH_PIPELINE:datapath_module|IF_ID_REG:if_id_reg|id_pc_plus_4[31]                                                                                 ;
+; DATAPATH_PIPELINE:datapath_module|IF_ID_REG:if_id_reg|id_instruction[3]                                                        ; Stuck at GND              ; DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|ex_auipc,                                                                                        ;
+;                                                                                                                                ; due to stuck port data_in ; DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|ex_jalr                                                                                          ;
+; DATAPATH_PIPELINE:datapath_module|MEM_WB_REG:mem_wb_reg|wb_pc_plus_4[1]                                                        ; Lost Fanouts              ; DATAPATH_PIPELINE:datapath_module|EX_MEM_REG:ex_mem_reg|mem_pc_plus_4[1]                                                                               ;
+; DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0|shift_taps_01m:auto_generated|dffe6     ; Lost Fanouts              ; DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0|shift_taps_01m:auto_generated|cntr_74h:cntr5|pre_hazard[0]      ;
+; DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0|shift_taps_01m:auto_generated|dffe3a[0] ; Lost Fanouts              ; DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0|shift_taps_01m:auto_generated|cntr_kkf:cntr1|current_reg_q_w[0] ;
+; DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0|shift_taps_01m:auto_generated|dffe3a[1] ; Lost Fanouts              ; DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0|shift_taps_01m:auto_generated|cntr_kkf:cntr1|current_reg_q_w[1] ;
++--------------------------------------------------------------------------------------------------------------------------------+---------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 1441  ;
+; Number of registers using Synchronous Clear  ; 96    ;
+; Number of registers using Synchronous Load   ; 72    ;
+; Number of registers using Asynchronous Clear ; 1369  ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 1114  ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++---------------------------------------------------------------------------------------+
+; Inverted Register Statistics                                                          ;
++-----------------------------------------------------------------------------+---------+
+; Inverted Register                                                           ; Fan out ;
++-----------------------------------------------------------------------------+---------+
+; DATAPATH_PIPELINE:datapath_module|IF_ID_REG:if_id_reg|id_instruction[4]     ; 12      ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[28] ; 1       ;
+; Total number of inverted registers = 2                                      ;         ;
++-----------------------------------------------------------------------------+---------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Added for RAM Pass-Through Logic                                                                                                     ;
++-----------------------------------------------------------------------------+------------------------------------------------------------------+
+; Register Name                                                               ; RAM Name                                                         ;
++-----------------------------------------------------------------------------+------------------------------------------------------------------+
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[0]  ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[1]  ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[2]  ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[3]  ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[4]  ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[5]  ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[6]  ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[7]  ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[8]  ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[9]  ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[10] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[11] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[12] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[13] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[14] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[15] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[16] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[17] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[18] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[19] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[20] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[21] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[22] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[23] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[24] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[25] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[26] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[27] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[28] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[29] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[30] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[31] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[32] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[33] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[34] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[35] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[36] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[37] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[38] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[39] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[40] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[41] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[42] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[43] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[44] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[45] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[46] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[47] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[48] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[49] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[50] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[51] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[52] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[53] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[54] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[55] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[56] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[57] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[58] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[59] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[60] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[61] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[62] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[63] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[64] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[65] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[66] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[67] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[68] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[69] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[70] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[71] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[72] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[73] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[74] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[75] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
+; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0_bypass[76] ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0 ;
++-----------------------------------------------------------------------------+------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Packed Into Inferred Megafunctions                                                                                                                         ;
++------------------------------------------------------------------------------+--------------------------------------------------------------------------+------------+
+; Register Name                                                                ; Megafunction                                                             ; Type       ;
++------------------------------------------------------------------------------+--------------------------------------------------------------------------+------------+
+; DATAPATH_PIPELINE:datapath_module|MEM_WB_REG:mem_wb_reg|wb_pc_plus_4[2..31]  ; DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|ex_pc_plus_4_rtl_0 ; SHIFT_TAPS ;
+; DATAPATH_PIPELINE:datapath_module|EX_MEM_REG:ex_mem_reg|mem_pc_plus_4[2..31] ; DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|ex_pc_plus_4_rtl_0 ; SHIFT_TAPS ;
+; DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|ex_pc_plus_4[2..31]    ; DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|ex_pc_plus_4_rtl_0 ; SHIFT_TAPS ;
++------------------------------------------------------------------------------+--------------------------------------------------------------------------+------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                   ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------+
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |PROCESSOR_PIPELINE|DATAPATH_PIPELINE:datapath_module|MEM_WB_REG:mem_wb_reg|wb_read_data[16] ;
+; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |PROCESSOR_PIPELINE|DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|ex_imm[8]          ;
+; 3:1                ; 88 bits   ; 176 LEs       ; 88 LEs               ; 88 LEs                 ; Yes        ; |PROCESSOR_PIPELINE|DATAPATH_PIPELINE:datapath_module|IF_ID_REG:if_id_reg|id_pc[2]           ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |PROCESSOR_PIPELINE|DATAPATH_PIPELINE:datapath_module|MEM_WB_REG:mem_wb_reg|wb_read_data[14] ;
+; 9:1                ; 4 bits    ; 24 LEs        ; 8 LEs                ; 16 LEs                 ; Yes        ; |PROCESSOR_PIPELINE|DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|ex_imm[2]          ;
+; 35:1               ; 32 bits   ; 736 LEs       ; 704 LEs              ; 32 LEs                 ; Yes        ; |PROCESSOR_PIPELINE|DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|ex_read_data1[6]   ;
+; 35:1               ; 32 bits   ; 736 LEs       ; 704 LEs              ; 32 LEs                 ; Yes        ; |PROCESSOR_PIPELINE|DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|ex_read_data2[30]  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |PROCESSOR_PIPELINE|DATAPATH_PIPELINE:datapath_module|IF_ID_REG:if_id_reg|id_instruction[4]  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |PROCESSOR_PIPELINE|DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram               ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |PROCESSOR_PIPELINE|DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram               ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; No         ; |PROCESSOR_PIPELINE|DATAPATH_PIPELINE:datapath_module|ex_alu_input_a_fwd[23]                 ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; No         ; |PROCESSOR_PIPELINE|DATAPATH_PIPELINE:datapath_module|ex_alu_input_b_fwd[28]                 ;
+; 34:1               ; 32 bits   ; 704 LEs       ; 704 LEs              ; 0 LEs                  ; No         ; |PROCESSOR_PIPELINE|DATAPATH_PIPELINE:datapath_module|REG_FILE:reg_file|debug_reg_data[8]    ;
+; 17:1               ; 7 bits    ; 77 LEs        ; 56 LEs               ; 21 LEs                 ; No         ; |PROCESSOR_PIPELINE|DATAPATH_PIPELINE:datapath_module|ALU:alu_inst|Mux12                     ;
+; 16:1               ; 8 bits    ; 80 LEs        ; 56 LEs               ; 24 LEs                 ; No         ; |PROCESSOR_PIPELINE|DATAPATH_PIPELINE:datapath_module|ALU:alu_inst|Mux22                     ;
+; 18:1               ; 4 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; No         ; |PROCESSOR_PIPELINE|DATAPATH_PIPELINE:datapath_module|ALU:alu_inst|Mux6                      ;
+; 17:1               ; 4 bits    ; 44 LEs        ; 32 LEs               ; 12 LEs                 ; No         ; |PROCESSOR_PIPELINE|DATAPATH_PIPELINE:datapath_module|ALU:alu_inst|Mux27                     ;
+; 19:1               ; 2 bits    ; 24 LEs        ; 18 LEs               ; 6 LEs                  ; No         ; |PROCESSOR_PIPELINE|DATAPATH_PIPELINE:datapath_module|ALU:alu_inst|Mux2                      ;
+; 18:1               ; 2 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; No         ; |PROCESSOR_PIPELINE|DATAPATH_PIPELINE:datapath_module|ALU:alu_inst|Mux29                     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Source assignments for DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0|shift_taps_01m:auto_generated|altsyncram_7461:altsyncram4 ;
++---------------------------------+--------------------+------+-----------------------------------------------------------------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                                                                        ;
++---------------------------------+--------------------+------+-----------------------------------------------------------------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                                                                         ;
++---------------------------------+--------------------+------+-----------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------+
+; Source assignments for DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|altsyncram:ram_rtl_0|altsyncram_i5i1:auto_generated ;
++---------------------------------+--------------------+------+---------------------------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                                  ;
++---------------------------------+--------------------+------+---------------------------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                                   ;
++---------------------------------+--------------------+------+---------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0 ;
++----------------+----------------+-------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value          ; Type                                                                                                  ;
++----------------+----------------+-------------------------------------------------------------------------------------------------------+
+; WIDTH_BYTEENA  ; 1              ; Untyped                                                                                               ;
+; NUMBER_OF_TAPS ; 1              ; Untyped                                                                                               ;
+; TAP_DISTANCE   ; 3              ; Untyped                                                                                               ;
+; WIDTH          ; 30             ; Untyped                                                                                               ;
+; POWER_UP_STATE ; CLEARED        ; Untyped                                                                                               ;
+; CBXI_PARAMETER ; shift_taps_01m ; Untyped                                                                                               ;
++----------------+----------------+-------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|altsyncram:ram_rtl_0 ;
++------------------------------------+------------------------------------------------------+----------------------------------+
+; Parameter Name                     ; Value                                                ; Type                             ;
++------------------------------------+------------------------------------------------------+----------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                                                    ; Untyped                          ;
+; AUTO_CARRY_CHAINS                  ; ON                                                   ; AUTO_CARRY                       ;
+; IGNORE_CARRY_BUFFERS               ; OFF                                                  ; IGNORE_CARRY                     ;
+; AUTO_CASCADE_CHAINS                ; ON                                                   ; AUTO_CASCADE                     ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                                                  ; IGNORE_CASCADE                   ;
+; WIDTH_BYTEENA                      ; 1                                                    ; Untyped                          ;
+; OPERATION_MODE                     ; DUAL_PORT                                            ; Untyped                          ;
+; WIDTH_A                            ; 32                                                   ; Untyped                          ;
+; WIDTHAD_A                          ; 6                                                    ; Untyped                          ;
+; NUMWORDS_A                         ; 64                                                   ; Untyped                          ;
+; OUTDATA_REG_A                      ; UNREGISTERED                                         ; Untyped                          ;
+; ADDRESS_ACLR_A                     ; NONE                                                 ; Untyped                          ;
+; OUTDATA_ACLR_A                     ; NONE                                                 ; Untyped                          ;
+; WRCONTROL_ACLR_A                   ; NONE                                                 ; Untyped                          ;
+; INDATA_ACLR_A                      ; NONE                                                 ; Untyped                          ;
+; BYTEENA_ACLR_A                     ; NONE                                                 ; Untyped                          ;
+; WIDTH_B                            ; 32                                                   ; Untyped                          ;
+; WIDTHAD_B                          ; 6                                                    ; Untyped                          ;
+; NUMWORDS_B                         ; 64                                                   ; Untyped                          ;
+; INDATA_REG_B                       ; CLOCK1                                               ; Untyped                          ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1                                               ; Untyped                          ;
+; RDCONTROL_REG_B                    ; CLOCK1                                               ; Untyped                          ;
+; ADDRESS_REG_B                      ; CLOCK0                                               ; Untyped                          ;
+; OUTDATA_REG_B                      ; UNREGISTERED                                         ; Untyped                          ;
+; BYTEENA_REG_B                      ; CLOCK1                                               ; Untyped                          ;
+; INDATA_ACLR_B                      ; NONE                                                 ; Untyped                          ;
+; WRCONTROL_ACLR_B                   ; NONE                                                 ; Untyped                          ;
+; ADDRESS_ACLR_B                     ; NONE                                                 ; Untyped                          ;
+; OUTDATA_ACLR_B                     ; NONE                                                 ; Untyped                          ;
+; RDCONTROL_ACLR_B                   ; NONE                                                 ; Untyped                          ;
+; BYTEENA_ACLR_B                     ; NONE                                                 ; Untyped                          ;
+; WIDTH_BYTEENA_A                    ; 1                                                    ; Untyped                          ;
+; WIDTH_BYTEENA_B                    ; 1                                                    ; Untyped                          ;
+; RAM_BLOCK_TYPE                     ; AUTO                                                 ; Untyped                          ;
+; BYTE_SIZE                          ; 8                                                    ; Untyped                          ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                            ; Untyped                          ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ                                 ; Untyped                          ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ                                 ; Untyped                          ;
+; INIT_FILE                          ; db/PROCESSOR_PIPELINE.ram0_DATA_MEM_24ad6d9b.hdl.mif ; Untyped                          ;
+; INIT_FILE_LAYOUT                   ; PORT_A                                               ; Untyped                          ;
+; MAXIMUM_DEPTH                      ; 0                                                    ; Untyped                          ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL                                               ; Untyped                          ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL                                               ; Untyped                          ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL                                               ; Untyped                          ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL                                               ; Untyped                          ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN                                      ; Untyped                          ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN                                      ; Untyped                          ;
+; ENABLE_ECC                         ; FALSE                                                ; Untyped                          ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                                                ; Untyped                          ;
+; WIDTH_ECCSTATUS                    ; 3                                                    ; Untyped                          ;
+; DEVICE_FAMILY                      ; Cyclone II                                           ; Untyped                          ;
+; CBXI_PARAMETER                     ; altsyncram_i5i1                                      ; Untyped                          ;
++------------------------------------+------------------------------------------------------+----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------------------------------+
+; altshift_taps Parameter Settings by Entity Instance                                                                 ;
++----------------------------+----------------------------------------------------------------------------------------+
+; Name                       ; Value                                                                                  ;
++----------------------------+----------------------------------------------------------------------------------------+
+; Number of entity instances ; 1                                                                                      ;
+; Entity Instance            ; DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0 ;
+;     -- NUMBER_OF_TAPS      ; 1                                                                                      ;
+;     -- TAP_DISTANCE        ; 3                                                                                      ;
+;     -- WIDTH               ; 30                                                                                     ;
++----------------------------+----------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                                                                        ;
++-------------------------------------------+-----------------------------------------------------------------------------+
+; Name                                      ; Value                                                                       ;
++-------------------------------------------+-----------------------------------------------------------------------------+
+; Number of entity instances                ; 1                                                                           ;
+; Entity Instance                           ; DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|altsyncram:ram_rtl_0 ;
+;     -- OPERATION_MODE                     ; DUAL_PORT                                                                   ;
+;     -- WIDTH_A                            ; 32                                                                          ;
+;     -- NUMWORDS_A                         ; 64                                                                          ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                                                ;
+;     -- WIDTH_B                            ; 32                                                                          ;
+;     -- NUMWORDS_B                         ; 64                                                                          ;
+;     -- ADDRESS_REG_B                      ; CLOCK0                                                                      ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                                                ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                                                        ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                                                   ;
++-------------------------------------------+-----------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "DATAPATH_PIPELINE:datapath_module"                                                         ;
++-------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port        ; Type   ; Severity ; Details                                                                             ;
++-------------+--------+----------+-------------------------------------------------------------------------------------+
+; wb_rd       ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; wb_regwrite ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:14     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+    Info: Processing started: Sun Nov 22 13:53:33 2026
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off PROCESSOR_PIPELINE -c PROCESSOR_PIPELINE
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 2 design units, including 2 entities, in source file processor_pipeline.v
+    Info (12023): Found entity 1: PROCESSOR_PIPELINE
+    Info (12023): Found entity 2: IFU_PIPELINE
+Info (12021): Found 1 design units, including 1 entities, in source file datapath_pipeline.v
+    Info (12023): Found entity 1: DATAPATH_PIPELINE
+Info (12021): Found 1 design units, including 1 entities, in source file if_id_reg.v
+    Info (12023): Found entity 1: IF_ID_REG
+Info (12021): Found 1 design units, including 1 entities, in source file id_ex_reg.v
+    Info (12023): Found entity 1: ID_EX_REG
+Info (12021): Found 1 design units, including 1 entities, in source file ex_mem_reg.v
+    Info (12023): Found entity 1: EX_MEM_REG
+Info (12021): Found 1 design units, including 1 entities, in source file mem_wb_reg.v
+    Info (12023): Found entity 1: MEM_WB_REG
+Info (12021): Found 1 design units, including 1 entities, in source file forwarding_unit.v
+    Info (12023): Found entity 1: FORWARDING_UNIT
+Info (12021): Found 1 design units, including 1 entities, in source file hazard_detection.v
+    Info (12023): Found entity 1: HAZARD_DETECTION
+Info (12021): Found 1 design units, including 1 entities, in source file alu.v
+    Info (12023): Found entity 1: ALU
+Info (12021): Found 1 design units, including 1 entities, in source file control.v
+    Info (12023): Found entity 1: CONTROL
+Info (12021): Found 1 design units, including 1 entities, in source file reg_file.v
+    Info (12023): Found entity 1: REG_FILE
+Info (12021): Found 1 design units, including 1 entities, in source file imm_gen.v
+    Info (12023): Found entity 1: IMM_GEN
+Info (12021): Found 1 design units, including 1 entities, in source file inst_mem.v
+    Info (12023): Found entity 1: INST_MEM
+Info (12021): Found 1 design units, including 1 entities, in source file data_mem.v
+    Info (12023): Found entity 1: DATA_MEM
+Info (12021): Found 2 design units, including 2 entities, in source file de2_top_risc_v.v
+    Info (12023): Found entity 1: DE2_TOP_RISC_V
+    Info (12023): Found entity 2: SEG7_LUT
+Info (12127): Elaborating entity "PROCESSOR_PIPELINE" for the top level hierarchy
+Info (12128): Elaborating entity "IFU_PIPELINE" for hierarchy "IFU_PIPELINE:ifu_module"
+Info (12128): Elaborating entity "INST_MEM" for hierarchy "IFU_PIPELINE:ifu_module|INST_MEM:instr_mem"
+Warning (10030): Net "memory.data_a" at INST_MEM.v(14) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "memory.waddr_a" at INST_MEM.v(14) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "memory.we_a" at INST_MEM.v(14) has no driver or initial value, using a default initial value '0'
+Info (12128): Elaborating entity "DATAPATH_PIPELINE" for hierarchy "DATAPATH_PIPELINE:datapath_module"
+Info (12128): Elaborating entity "IF_ID_REG" for hierarchy "DATAPATH_PIPELINE:datapath_module|IF_ID_REG:if_id_reg"
+Info (12128): Elaborating entity "IMM_GEN" for hierarchy "DATAPATH_PIPELINE:datapath_module|IMM_GEN:imm_generator"
+Info (12128): Elaborating entity "CONTROL" for hierarchy "DATAPATH_PIPELINE:datapath_module|CONTROL:control_unit"
+Info (12128): Elaborating entity "REG_FILE" for hierarchy "DATAPATH_PIPELINE:datapath_module|REG_FILE:reg_file"
+Info (12128): Elaborating entity "HAZARD_DETECTION" for hierarchy "DATAPATH_PIPELINE:datapath_module|HAZARD_DETECTION:hazard_unit"
+Info (12128): Elaborating entity "ID_EX_REG" for hierarchy "DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg"
+Info (12128): Elaborating entity "FORWARDING_UNIT" for hierarchy "DATAPATH_PIPELINE:datapath_module|FORWARDING_UNIT:forwarding_unit"
+Info (12128): Elaborating entity "ALU" for hierarchy "DATAPATH_PIPELINE:datapath_module|ALU:alu_inst"
+Info (12128): Elaborating entity "EX_MEM_REG" for hierarchy "DATAPATH_PIPELINE:datapath_module|EX_MEM_REG:ex_mem_reg"
+Info (12128): Elaborating entity "DATA_MEM" for hierarchy "DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory"
+Info (12128): Elaborating entity "MEM_WB_REG" for hierarchy "DATAPATH_PIPELINE:datapath_module|MEM_WB_REG:mem_wb_reg"
+Warning (276020): Inferred RAM node "DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0" from synchronous design logic.  Pass-through logic has been added to match the read-during-write behavior of the original design.
+Info (19000): Inferred 2 megafunctions from design logic
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|ram_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 32
+        Info (286033): Parameter WIDTHAD_A set to 6
+        Info (286033): Parameter NUMWORDS_A set to 64
+        Info (286033): Parameter WIDTH_B set to 32
+        Info (286033): Parameter WIDTHAD_B set to 6
+        Info (286033): Parameter NUMWORDS_B set to 64
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter INIT_FILE set to db/PROCESSOR_PIPELINE.ram0_DATA_MEM_24ad6d9b.hdl.mif
+    Info (276034): Inferred altshift_taps megafunction from the following design logic: "DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|ex_pc_plus_4_rtl_0"
+        Info (286033): Parameter NUMBER_OF_TAPS set to 1
+        Info (286033): Parameter TAP_DISTANCE set to 3
+        Info (286033): Parameter WIDTH set to 30
+Info (12130): Elaborated megafunction instantiation "DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0"
+Info (12133): Instantiated megafunction "DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0" with the following parameter:
+    Info (12134): Parameter "NUMBER_OF_TAPS" = "1"
+    Info (12134): Parameter "TAP_DISTANCE" = "3"
+    Info (12134): Parameter "WIDTH" = "30"
+Info (12021): Found 1 design units, including 1 entities, in source file db/shift_taps_01m.tdf
+    Info (12023): Found entity 1: shift_taps_01m
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_7461.tdf
+    Info (12023): Found entity 1: altsyncram_7461
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_gvd.tdf
+    Info (12023): Found entity 1: add_sub_gvd
+Info (12021): Found 1 design units, including 1 entities, in source file db/cntr_kkf.tdf
+    Info (12023): Found entity 1: cntr_kkf
+Info (12021): Found 1 design units, including 1 entities, in source file db/cmpr_6cc.tdf
+    Info (12023): Found entity 1: cmpr_6cc
+Info (12021): Found 1 design units, including 1 entities, in source file db/cntr_74h.tdf
+    Info (12023): Found entity 1: cntr_74h
+Info (12130): Elaborated megafunction instantiation "DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|altsyncram:ram_rtl_0"
+Info (12133): Instantiated megafunction "DATAPATH_PIPELINE:datapath_module|DATA_MEM:data_memory|altsyncram:ram_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "32"
+    Info (12134): Parameter "WIDTHAD_A" = "6"
+    Info (12134): Parameter "NUMWORDS_A" = "64"
+    Info (12134): Parameter "WIDTH_B" = "32"
+    Info (12134): Parameter "WIDTHAD_B" = "6"
+    Info (12134): Parameter "NUMWORDS_B" = "64"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK0"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+    Info (12134): Parameter "INIT_FILE" = "db/PROCESSOR_PIPELINE.ram0_DATA_MEM_24ad6d9b.hdl.mif"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_i5i1.tdf
+    Info (12023): Found entity 1: altsyncram_i5i1
+Warning (14284): Synthesized away the following node(s):
+    Warning (14285): Synthesized away the following RAM node(s):
+        Warning (14320): Synthesized away node "DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0|shift_taps_01m:auto_generated|altsyncram_7461:altsyncram4|ram_block7a0"
+        Warning (14320): Synthesized away node "DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0|shift_taps_01m:auto_generated|altsyncram_7461:altsyncram4|ram_block7a1"
+        Warning (14320): Synthesized away node "DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0|shift_taps_01m:auto_generated|altsyncram_7461:altsyncram4|ram_block7a2"
+        Warning (14320): Synthesized away node "DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0|shift_taps_01m:auto_generated|altsyncram_7461:altsyncram4|ram_block7a3"
+        Warning (14320): Synthesized away node "DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0|shift_taps_01m:auto_generated|altsyncram_7461:altsyncram4|ram_block7a4"
+        Warning (14320): Synthesized away node "DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0|shift_taps_01m:auto_generated|altsyncram_7461:altsyncram4|ram_block7a5"
+        Warning (14320): Synthesized away node "DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0|shift_taps_01m:auto_generated|altsyncram_7461:altsyncram4|ram_block7a6"
+        Warning (14320): Synthesized away node "DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0|shift_taps_01m:auto_generated|altsyncram_7461:altsyncram4|ram_block7a7"
+        Warning (14320): Synthesized away node "DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0|shift_taps_01m:auto_generated|altsyncram_7461:altsyncram4|ram_block7a8"
+        Warning (14320): Synthesized away node "DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0|shift_taps_01m:auto_generated|altsyncram_7461:altsyncram4|ram_block7a9"
+        Warning (14320): Synthesized away node "DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0|shift_taps_01m:auto_generated|altsyncram_7461:altsyncram4|ram_block7a10"
+        Warning (14320): Synthesized away node "DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0|shift_taps_01m:auto_generated|altsyncram_7461:altsyncram4|ram_block7a11"
+        Warning (14320): Synthesized away node "DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0|shift_taps_01m:auto_generated|altsyncram_7461:altsyncram4|ram_block7a12"
+        Warning (14320): Synthesized away node "DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0|shift_taps_01m:auto_generated|altsyncram_7461:altsyncram4|ram_block7a13"
+        Warning (14320): Synthesized away node "DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0|shift_taps_01m:auto_generated|altsyncram_7461:altsyncram4|ram_block7a14"
+        Warning (14320): Synthesized away node "DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0|shift_taps_01m:auto_generated|altsyncram_7461:altsyncram4|ram_block7a15"
+        Warning (14320): Synthesized away node "DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0|shift_taps_01m:auto_generated|altsyncram_7461:altsyncram4|ram_block7a16"
+        Warning (14320): Synthesized away node "DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0|shift_taps_01m:auto_generated|altsyncram_7461:altsyncram4|ram_block7a17"
+        Warning (14320): Synthesized away node "DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0|shift_taps_01m:auto_generated|altsyncram_7461:altsyncram4|ram_block7a18"
+        Warning (14320): Synthesized away node "DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0|shift_taps_01m:auto_generated|altsyncram_7461:altsyncram4|ram_block7a19"
+        Warning (14320): Synthesized away node "DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0|shift_taps_01m:auto_generated|altsyncram_7461:altsyncram4|ram_block7a20"
+        Warning (14320): Synthesized away node "DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0|shift_taps_01m:auto_generated|altsyncram_7461:altsyncram4|ram_block7a21"
+        Warning (14320): Synthesized away node "DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0|shift_taps_01m:auto_generated|altsyncram_7461:altsyncram4|ram_block7a22"
+        Warning (14320): Synthesized away node "DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0|shift_taps_01m:auto_generated|altsyncram_7461:altsyncram4|ram_block7a23"
+        Warning (14320): Synthesized away node "DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0|shift_taps_01m:auto_generated|altsyncram_7461:altsyncram4|ram_block7a24"
+        Warning (14320): Synthesized away node "DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0|shift_taps_01m:auto_generated|altsyncram_7461:altsyncram4|ram_block7a25"
+        Warning (14320): Synthesized away node "DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0|shift_taps_01m:auto_generated|altsyncram_7461:altsyncram4|ram_block7a26"
+        Warning (14320): Synthesized away node "DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0|shift_taps_01m:auto_generated|altsyncram_7461:altsyncram4|ram_block7a27"
+        Warning (14320): Synthesized away node "DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0|shift_taps_01m:auto_generated|altsyncram_7461:altsyncram4|ram_block7a28"
+        Warning (14320): Synthesized away node "DATAPATH_PIPELINE:datapath_module|ID_EX_REG:id_ex_reg|altshift_taps:ex_pc_plus_4_rtl_0|shift_taps_01m:auto_generated|altsyncram_7461:altsyncram4|ram_block7a29"
+Info (13000): Registers with preset signals will power-up high
+Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "debug_instruction[0]" is stuck at VCC
+    Warning (13410): Pin "debug_instruction[1]" is stuck at VCC
+    Warning (13410): Pin "debug_instruction[2]" is stuck at GND
+    Warning (13410): Pin "debug_instruction[3]" is stuck at GND
+Info (17049): 40 registers lost all their fanouts during netlist optimizations.
+Info (144001): Generated suppressed messages file D:/hoctap/ki 7/do_an_thiet_ke_1/Risc_v_Pipeline/output_files/PROCESSOR_PIPELINE.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 5017 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 7 input pins
+    Info (21059): Implemented 131 output pins
+    Info (21061): Implemented 4847 logic cells
+    Info (21064): Implemented 32 RAM segments
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 42 warnings
+    Info: Peak virtual memory: 4622 megabytes
+    Info: Processing ended: Sun Nov 22 13:53:51 2026
+    Info: Elapsed time: 00:00:18
+    Info: Total CPU time (on all processors): 00:00:15
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in D:/hoctap/ki 7/do_an_thiet_ke_1/Risc_v_Pipeline/output_files/PROCESSOR_PIPELINE.map.smsg.
+
+

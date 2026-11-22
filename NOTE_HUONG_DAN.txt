@@ -1,0 +1,83 @@
+================================================================================
+HUONG DAN CHAY VA GIAI THICH CODE BO XU LY RISC-V 5-STAGE PIPELINE
+Do an Thiet ke 1 - RV32I Processor
+================================================================================
+
+I. CAC DIEM DA DUOC CHINH SUA DE CHAY DUOC TREN QUARTUS VA MODELSIM:
+--------------------------------------------------------------------------------
+1. ID_EX_REG.v:
+   - Sua loi "if (reset || flush)" gay loi tong hop Error (10200) tren Quartus.
+   - Da tach ro nhanh "if (reset)" bat dong bo va "else if (flush)" dong bo.
+
+2. DATA_MEM.v:
+   - Khac phuc vong lap reset 1024 o nho gay tran tai nguyen chip FPGA va lam treo
+     qua trinh tong hop cua Quartus.
+   - Bo nho duoc toi uu thanh 64 tu (256 bytes) va khoi tao qua khoi initial chuan.
+
+3. REG_FILE.v:
+   - Sua loi suy luan chot (Latch inference warning 10240) cho bien dem vong lap "i".
+
+4. PROCESSOR_PIPELINE.qsf:
+   - Bo sung file con thieu: IMM_GEN.v va DATA_MEM.v vao project Quartus.
+   - Chuyen file PROCESSOR_PIPELINE_tb.v thanh file testbench cho NativeLink EDA Simulation
+     (khong bi tong hop thanh mach phan cung).
+
+5. File Script mo phong ModelSim:
+   - Tao file "run_sim.do" tai thu muc goc: tu dong compile, load testbench, 
+     phan nhom cac tin hieu theo tung tang Pipeline (IF, ID, EX, MEM, WB, REGISTERS)
+     va chay mo phong 1500ns.
+   - Cap nhat lai file script trong "simulation/modelsim/" de nut chay mo phong
+     trong Quartus (RTL Simulation) hoat dong chuan xac.
+
+
+II. HUONG DAN CHAY TREN PHAN MEM QUARTUS II:
+--------------------------------------------------------------------------------
+1. Mo phan mem Quartus II (64-Bit).
+2. Chon: File -> Open Project...
+3. Tim den thu muc va mo file: "PROCESSOR_PIPELINE.qpf"
+4. De bien dich toan bo:
+   - Chon menu: Processing -> Start Compilation (hoac nhan Ctrl + L).
+   - Qua trinh tong hop, Fitter va Timing Analyzer chay thanh cong 100% voi 0 ERROR.
+5. De mo phong tu Quartus:
+   - Chon menu: Tools -> Run Simulation Tool -> RTL Simulation.
+
+
+III. HUONG DAN CHAY MO PHONG TREN MODELSIM:
+--------------------------------------------------------------------------------
+[CACH 1 - KHUYEN NGHI - NHANH NHAT]
+1. Mo phan mem ModelSim.
+2. Tai cua so Transcript ben duoi, go lenh:
+   cd "d:/hoctap/ki 7/do_an_thiet_ke_1/Risc_v_Pipeline"
+3. Go lenh chay script:
+   do run_sim.do
+4. ModelSim se tu dong bien dich tat ca cac file, add day du dang song (waveform)
+   va hien thi ket qua:
+   ">>> [PASSED] ALL RISC-V PIPELINE RV32I VERIFICATION TESTS PASSED SUCCESSFULLY! <<<"
+
+[CACH 2 - CHAY QUA DONG LENH POWERSHELL / CMD]
+1. Mo PowerShell tai thu muc project va go:
+   vsim -c -do "do run_sim.do; quit -f"
+
+
+IV. DANH SACH CAC FILE TRONG DU AN:
+--------------------------------------------------------------------------------
+1. PROCESSOR_PIPELINE.v   : Top module ket noi IFU va Datapath
+2. DATAPATH_PIPELINE.v    : Duong truyen du lieu 5 tang (IF-ID-EX-MEM-WB)
+3. CONTROL.v              : Khoi giai ma va dieu khien
+4. ALU.v                  : Khoi tinh toan so hoc va logic 32-bit
+5. IMM_GEN.v              : Bo tao so tuc thoi mo rong dau (I, S, B, U, J)
+6. REG_FILE.v             : Tap 32 thanh ghi 32-bit voi bypass noi bo
+7. INST_MEM.v             : Bo nho chua chuong trinh test RV32I
+8. DATA_MEM.v             : Bo nho du lieu ho tro Byte, Halfword, Word
+9. IF_ID_REG.v            : Thanh ghi phan tang IF -> ID
+10. ID_EX_REG.v           : Thanh ghi phan tang ID -> EX
+11. EX_MEM_REG.v          : Thanh ghi phan tang EX -> MEM
+12. MEM_WB_REG.v          : Thanh ghi phan tang MEM -> WB
+13. FORWARDING_UNIT.v     : Khoi chuyen tiep du lieu xu ly xung dot RAW
+14. HAZARD_DETECTION.v    : Khoi xu ly xung dot Load-Use va Branch/Jump Flush
+15. PROCESSOR_PIPELINE_tb.v : Testbench tu dong kiem thu
+16. run_sim.do            : Script tu dong hoa mo phong cho ModelSim
+17. HUONG_DAN_SU_DUNG_VA_GIAI_THICH_CODE.md : File note huong dan va giai thich chi tiet
+
+================================================================================
+

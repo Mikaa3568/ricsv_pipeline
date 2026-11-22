@@ -1,0 +1,12 @@
+# Quartus II temporary / database files
+db/
+incremental_db/
+simulation/
+*.qws
+*.bak
+
+# ModelSim simulation artifacts
+work/
+transcript
+*.wlf
+*.vcd
